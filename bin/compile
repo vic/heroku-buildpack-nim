@@ -3,15 +3,15 @@
 
 set -eo pipefail
 
-arrow() {
+function arrow() {
   sed -u 's/^/----->  /'
 }
 
-indent() {
+function indent() {
   sed -u 's/^/       /'
 }
 
-cat_or() {
+function cat_or() {
   echo $(cat $1 2>/dev/null || echo $2)
 }
 
