@@ -29,6 +29,11 @@ NIMBLE_BIN=$NIMBLE_DIR/bin/nimble
 PATH="$NIM_DIR/bin:$NIMBLE_DIR/bin:$PATH"
 export PATH
 
+mkdir -p $HOME/.config/nimble
+cat <<EOF > $HOME/.config/nimble/nimble.ini
+nimbleDir = r"$NIMBLE_DIR"
+EOF
+
 if [ ! -x $NIM_BIN ]; then
     nim_repo=$(cat_or $ENV_DIR/NIM_REPO "git://github.com/Araq/Nim.git")
     nim_branch=$(cat_or $ENV_DIR/NIM_BRANCH "master")
@@ -53,11 +58,10 @@ if [ ! -x $NIMBLE_BIN ]; then
     nimble_repo=$(cat_or $ENV_DIR/NIMBLE_REPO "git://github.com/nim-lang/nimble.git")
     git clone --depth 1 $nimble_repo $CACHE_DIR/nimble
     cd $CACHE_DIR/nimble
-    $NIM_BIN c src/nimble
-    env HOME=$CACHE_DIR./src/nimble install $(cat_or $ENV_DIR/NIMBLE_DEP "nimble")
+    $NIM_BIN c -r src/nimble install
 fi
 
-cd $BUILD_DIR
 
 echo "Building app" | arrow
-env HOME=$CACHE_DIR nimble build --accept
+cd $BUILD_DIR
+$NIMBLE_BIN build --accept

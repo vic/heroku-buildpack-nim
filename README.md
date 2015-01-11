@@ -26,19 +26,6 @@ heroku create --stack cedar --buildpack https://github.com/vic/heroku-buildpack-
 Options
 -------
 
-You may want to set the following variables using `heroku config:set`
-
-```shell
-NIM_BRANCH=master # set to devel if your app needs latest Nim version
-
-
-NIM_REPO=git://github.com/Araq/Nim.git # change only if using your own nim fork
-
-
-NIMBLE_DEP=nimble # an specific nimble dependency if needed, like nimble@#master
-
-```
-
 If you want to use an specific Nim version use the `NIM_BRANCH` environment variable.
 
 ```shell
