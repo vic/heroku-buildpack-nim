@@ -30,7 +30,7 @@ NIMBLE_BIN=$NIMBLE_DIR/bin/nimble
 if [ ! -x $NIM_BIN ]; then
     nim_repo=$(cat_or $ENV_DIR/NIM_REPO "git://github.com/Araq/Nim.git")
     nim_branch=$(cat_or $ENV_DIR/NIM_BRANCH "master")
-    nim_csources=$(car_or $ENV_DIR/NIM_CSOURCES "git://github.com/nim-lang/csources.git")
+    nim_csources=$(cat_or $ENV_DIR/NIM_CSOURCES "git://github.com/nim-lang/csources.git")
 
     echo "Installing Nim" | arrow
 
