@@ -58,7 +58,7 @@ if [ ! -x $NIMBLE_BIN ]; then
     nimble_repo=$(cat_or $ENV_DIR/NIMBLE_REPO "git://github.com/nim-lang/nimble.git")
     git clone --depth 1 $nimble_repo $CACHE_DIR/nimble
     cd $CACHE_DIR/nimble
-    $NIM_BIN c -r src/nimble install
+    $NIM_BIN c -r src/nimble install -y
 fi
 
 
