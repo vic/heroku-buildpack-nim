@@ -9,7 +9,7 @@ Usage
 The buildpack expects you to include a `.nimble` file in order to download dependencies and build your app.
 
 
-Be sure to set the [bin](https://github.com/nim-lang/nimble/blob/master/developers.markdown#binary-packages) value on your nimble file to the executable name for your app.
+Be sure to set the [bin](https://github.com/nim-lang/nimble#binary-packages) value on your nimble file to the executable name for your app.
 
 And create a `Procfile` with a process to run for your executable:
 
