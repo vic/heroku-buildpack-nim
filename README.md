@@ -1,6 +1,9 @@
 Heroku buildpack: Nim
 =====================
 
+[![help maintain this lib](https://img.shields.io/badge/looking%20for%20maintainer-DM%20%40vborja-663399.svg)](https://twitter.com/vborja)
+
+
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for [Nim](http://nim-lang.org) apps. It uses [Nimble](https://github.com/nim-lang/nimble) for dependency management.
 
 Usage
