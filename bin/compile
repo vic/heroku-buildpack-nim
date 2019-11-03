@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # usage: bin/compile <build-dir> <cache-dir> <env-dir>
 
 set -eo pipefail
@@ -35,20 +35,14 @@ nimbleDir = r"$NIMBLE_DIR"
 EOF
 
 if [ ! -x $NIM_BIN ]; then
-    nim_repo=$(cat_or $ENV_DIR/NIM_REPO "git://github.com/Araq/Nim.git")
+    nim_repo=$(cat_or $ENV_DIR/NIM_REPO "git://github.com/nim-lang/Nim.git")
     nim_branch=$(cat_or $ENV_DIR/NIM_BRANCH "master")
-    nim_csources=$(cat_or $ENV_DIR/NIM_CSOURCES "git://github.com/nim-lang/csources.git")
 
     echo "Installing Nim..." | arrow
 
     git clone --depth 1 --branch $nim_branch $nim_repo $NIM_DIR
     cd $NIM_DIR
-    git clone --depth 1 $nim_csources csources
-    cd csources && sh build.sh
-    cd ..
-    bin/nim c koch
-    ./koch boot -d:release
-
+    sh build_all.sh
 
     echo "using ${nim_repo} @${nim_branch}" | indent
 fi
