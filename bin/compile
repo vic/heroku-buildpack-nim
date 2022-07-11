@@ -35,7 +35,7 @@ nimbleDir = r"$NIMBLE_DIR"
 EOF
 
 if [ ! -x $NIM_BIN ]; then
-    nim_repo=$(cat_or $ENV_DIR/NIM_REPO "git://github.com/nim-lang/Nim.git")
+    nim_repo=$(cat_or $ENV_DIR/NIM_REPO "https://github.com/nim-lang/Nim.git")
     nim_branch=$(cat_or $ENV_DIR/NIM_BRANCH "master")
 
     echo "Installing Nim..." | arrow
@@ -49,7 +49,7 @@ fi
 
 if [ ! -x $NIMBLE_BIN ]; then
     echo "Installing Nimble..." | arrow
-    nimble_repo=$(cat_or $ENV_DIR/NIMBLE_REPO "git://github.com/nim-lang/nimble.git")
+    nimble_repo=$(cat_or $ENV_DIR/NIMBLE_REPO "https://github.com/nim-lang/nimble.git")
     git clone --depth 1 $nimble_repo $CACHE_DIR/nimble
     cd $CACHE_DIR/nimble
     $NIM_BIN c -r src/nimble install -y
